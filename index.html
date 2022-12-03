@@ -35,7 +35,7 @@
             <div class="col-md-4">
                 <div class="withdraw transCommon">
                     <h5>Withdraw</h5>
-                    <h2>$00</h2>
+                    <h2>$ <span id="totalWithdraw">00</span> </h2>
                 </div>
             </div>
             <div class="col-md-4">
@@ -59,9 +59,9 @@
                     <div class="col-md-6">
                         <div class="withdrawInput">
                             <h4>Withdraw</h4>
-                            <input type="number" class ="form-control" placeholder="Enter amount">
+                            <input type="number" id="withdrawAmount" class ="form-control" placeholder="Enter amount">
                             <br>
-                            <button class="btn btn-success">Withdraw</button>
+                            <button id="withdrawButton" class="btn btn-success">Withdraw</button>
                         </div>
                     </div>
                 </div>
@@ -100,8 +100,29 @@
             document.getElementById("currentBalence").innerText = currentTotalAmount;
 
             document.getElementById("depositInput").value = "";
+            })
+            //withdraw amount
+            const withdrawbtn = document.getElementById("withdrawButton");
+            withdrawbtn.addEventListener("click", function(){
+                const withdrawValue = document.getElementById("withdrawAmount").value;
+                const withdrawNumber = parseFloat(withdrawValue);
 
-        })
+                const withdrawCount = document.getElementById("totalWithdraw").innerText;
+                const withdrawCountNumber = parseFloat(withdrawCount);
+
+                const totalWithdrawAmount = withdrawCountNumber + withdrawNumber;
+
+                document.getElementById("totalWithdraw").innerText = totalWithdrawAmount;
+
+                const currentBalanceAmount = document.getElementById("currentBalence").innerText;
+                const currentBalanceNumber = parseFloat(currentBalanceAmount);
+
+                const afterWithdraw = currentBalanceNumber - withdrawNumber;
+                document.getElementById("currentBalence").innerText = afterWithdraw;
+
+                document.getElementById("withdrawAmount").value = "";
+            })
+
     </script>
 
 </body>
