@@ -7,7 +7,7 @@ body{
     border-radius: 10px;
     margin-top: 40px;
 }
-#login-area p{
+.branding{
     text-align: center;
     margin-top: 30px;
     color: gray;
